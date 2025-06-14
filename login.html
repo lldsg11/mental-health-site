@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SafeMind</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Add Facebook SDK -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login to SafeMind</h2>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-submit">Login</button>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <div class="social-login">
+                    <!-- Google Sign-In Button -->
+                    <div id="g_id_onload"
+                         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleGoogleSignIn"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="rectangular"
+                         data-theme="outline"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+
+                    <!-- Facebook Login Button -->
+                    <div class="fb-login-button" 
+                         data-width="" 
+                         data-size="large" 
+                         data-button-type="login_with" 
+                         data-layout="default" 
+                         data-auto-logout-link="false" 
+                         data-use-continue-as="false"
+                         onlogin="handleFacebookLogin">
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <a href="#" class="register">Create New Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Facebook SDK
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: 'YOUR_FACEBOOK_APP_ID',
+                cookie: true,
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        // Handle Google Sign-In
+        function handleGoogleSignIn(response) {
+            // Send the ID token to your server
+            const credential = response.credential;
+            console.log("Google Sign-In successful:", credential);
+            // Here you would typically send this token to your server for verification
+            // and then redirect to the main page
+            window.location.href = 'index.html';
+        }
+
+        // Handle Facebook Login
+        function handleFacebookLogin(response) {
+            if (response.authResponse) {
+                console.log("Facebook Login successful:", response);
+                // Here you would typically send the access token to your server
+                // and then redirect to the main page
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeMind - Student Mental Health Support Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add animation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Add AI chat functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar modern-navbar">
+            <div class="logo">SafeMind</div>
+            <ul class="nav-links">
+                <li><a href="#home">Homepage</a></li>
+                <li><a href="#growth">Growth Tools</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="#contact" class="main-btn">Contact us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1>Elevate Your<br>Emotional Well-being</h1>
+                <p>Discover powerful tools and resources to manage your emotions and foster personal growth.</p>
+                <a href="#relaxation" class="main-btn">Explore Our Tools &rarr;</a>
+                <div class="hero-icons">
+                    <div><span class="hero-icon">💚</span><br>Enhance Emotional Awareness</div>
+                    <div><span class="hero-icon">🧠</span><br>Improve Mental Resilience</div>
+                    <div><span class="hero-icon">🤝</span><br>Connect with a Supportive Community</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-cards">
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Track Your Progress</h3>
+                <p>Monitor your emotional state and personal growth with our intuitive tracking tools.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧘</div>
+                <h3>Guided Meditations</h3>
+                <p>Find peace and clarity with our selection of guided meditation sessions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Community Support</h3>
+                <p>Share your experiences and receive support from our caring community.</p>
+            </div>
+        </section>
+
+        <section id="mood-tracker" class="feature-section">
+            <h2>Mood Tracker</h2>
+            <div class="feature-content">
+                <div class="mood-input-container">
+                    <h3>How are you feeling today?</h3>
+                    <div class="mood-selector">
+                        <button class="mood-btn" data-mood="very-happy">😊</button>
+                        <button class="mood-btn" data-mood="happy">🙂</button>
+                        <button class="mood-btn" data-mood="neutral">😐</button>
+                        <button class="mood-btn" data-mood="sad">🙁</button>
+                        <button class="mood-btn" data-mood="very-sad">😢</button>
+                    </div>
+                    <textarea id="mood-note" placeholder="Record your mood for today..."></textarea>
+                    <button id="save-mood" class="primary-btn">Save Record</button>
+                </div>
+                <div class="mood-stats">
+                    <canvas id="mood-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="relaxation" class="feature-section">
+            <h2>Relaxation Tools</h2>
+            <div class="feature-content">
+                <div class="tools-grid">
+                    <div class="tool-card" id="breathing-exercise">
+                        <h3>Breathing Exercise</h3>
+                        <div class="breathing-animation">
+                            <div class="breathing-circle"></div>
+                        </div>
+                        <p>Follow the animation for breathing relaxation</p>
+                        <button class="start-exercise">Start Exercise</button>
+                    </div>
+                    <div class="tool-card" id="meditation">
+                        <h3>Guided Meditation</h3>
+                        <div class="meditation-player">
+                            <audio id="meditation-audio" controls>
+                                <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0c6ff1bab.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="meditation-timer">00:00</div>
+                        </div>
+                        <button class="start-meditation">Start Meditation</button>
+                    </div>
+                    <div class="tool-card" id="music-player">
+                        <h3>Relaxation Music</h3>
+                        <div class="music-player">
+                            <div class="playlist">
+                                <div class="playlist-item" data-src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73c1a.mp3">Relaxation Music 1 - Calm Ocean Waves</div>
+                                <div class="playlist-item" data-src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_0625c1539a.mp3">Relaxation Music 2 - Peaceful Forest</div>
+                                <div class="playlist-item" data-src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_0c1b0b0b0b.mp3">Relaxation Music 3 - Gentle Rain</div>
+                            </div>
+                            <audio id="relaxation-music" controls>
+                                <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73c1a.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="podcasts" class="feature-section">
+            <h2>Motivational Podcasts</h2>
+            <div class="feature-content">
+                <div class="podcast-list" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                    <div class="podcast-card" style="background: #f5f7fa; border-radius: 12px; padding: 2rem; max-width: 350px; min-width: 250px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center;">
+                        <h3>Rise & Shine: Student Motivation</h3>
+                        <p>Short daily episodes to boost your confidence and energy before class or exams.</p>
+                        <audio controls style="width: 100%; margin-top: 1rem;">
+                            <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_12b5b5b5b5.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="podcast-card" style="background: #f5f7fa; border-radius: 12px; padding: 2rem; max-width: 350px; min-width: 250px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center;">
+                        <h3>Mindful Minutes</h3>
+                        <p>Quick mindfulness and motivation tips for stressful moments and self-care.</p>
+                        <audio controls style="width: 100%; margin-top: 1rem;">
+                            <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73c1a.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="podcast-card" style="background: #f5f7fa; border-radius: 12px; padding: 2rem; max-width: 350px; min-width: 250px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center;">
+                        <h3>Exam Week Warriors</h3>
+                        <p>Motivational stories and advice from students who overcame challenges during exams.</p>
+                        <audio controls style="width: 100%; margin-top: 1rem;">
+                            <source src="https://cdn.pixabay.com/audio/2022/07/26/audio_124b5b5b5b.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="feature-section">
+            <h2>Peer Support</h2>
+            <div class="feature-content">
+                <p>Join our support community and share experiences with peers</p>
+                <div class="support-network">
+                    <!-- Support network functionality will be implemented here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-assistant" class="feature-section">
+            <h2>AI Emotional Assistant</h2>
+            <div class="feature-content">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message ai-message">
+                            Hello! I'm your AI emotional assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="user-input" placeholder="Type your thoughts...">
+                        <button id="send-message">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="feedback" class="feature-section">
+            <h2>User Feedback</h2>
+            <div class="feature-content">
+                <form id="feedback-form" class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-type">Feedback Type</label>
+                        <select id="feedback-type">
+                            <option value="suggestion">Suggestion</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="praise">Praise</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-content">Feedback Content</label>
+                        <textarea id="feedback-content" required></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn">Submit Feedback</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SafeMind. All rights reserved.</p>
+    </footer>
+
+    <!-- Add custom JavaScript -->
+    <script src="js/mood-tracker.js"></script>
+    <script src="js/relaxation.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html> 
