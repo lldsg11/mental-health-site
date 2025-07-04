@@ -8,8 +8,8 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    color: #222;
+    background: linear-gradient(-45deg, #7ed957, #23a6d5, #23d5ab, #e0f7fa);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     min-height: 100vh;
@@ -89,6 +89,12 @@ body {
     box-shadow: 0 4px 16px rgba(39,174,96,0.15);
 }
 
+.main-btn-large {
+    font-size: 1.3rem;
+    padding: 1.2rem 3rem;
+    margin-top: 1.5rem;
+}
+
 /* Hero大横幅 */
 .hero-section {
     position: relative;
@@ -162,7 +168,7 @@ body {
 .feature-card {
     background: #fff;
     border-radius: 1.5rem;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 16px rgba(39,174,96,0.10);
     padding: 2.5rem 2rem 2rem 2rem;
     text-align: center;
     flex: 1 1 280px;
@@ -318,11 +324,13 @@ main {
 }
 
 .tool-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 16px rgba(39,174,96,0.10);
+    padding: 2.5rem 2rem 2rem 2rem;
     text-align: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 /* 呼吸练习动画 */
@@ -824,6 +832,15 @@ footer {
 .podcast-card audio {
     width: 100%;
     margin-top: 1rem;
+}
+
+.youtube-embed {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(39,174,96,0.10);
 }
 
 /* 响应式设计 */

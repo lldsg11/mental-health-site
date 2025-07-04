@@ -11,6 +11,13 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </head>
 <body>
+    <nav class="navbar modern-navbar">
+        <div class="logo">SafeMind</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
     <div class="login-container">
         <div class="login-box">
             <h2>Login to SafeMind</h2>
@@ -85,6 +92,7 @@
             console.log("Google Sign-In successful:", credential);
             // Here you would typically send this token to your server for verification
             // and then redirect to the main page
+            localStorage.setItem('login', 'true');
             window.location.href = 'index.html';
         }
 
@@ -94,9 +102,17 @@
                 console.log("Facebook Login successful:", response);
                 // Here you would typically send the access token to your server
                 // and then redirect to the main page
+                localStorage.setItem('login', 'true');
                 window.location.href = 'index.html';
             }
         }
+
+        // 普通表单登录
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('login', 'true');
+            window.location.href = 'index.html';
+        });
     </script>
 </body>
 </html> 
